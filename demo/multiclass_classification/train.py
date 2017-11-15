@@ -6,9 +6,17 @@ import numpy as np
 import xgboost as xgb
 
 # label need to be 0 to num_class -1
-data = np.loadtxt('./dermatology.data', delimiter=',',
-        converters={33: lambda x:int(x == '?'), 34: lambda x:int(x)-1})
+data = np.loadtxt('/home/wml/dataset/dermatology.data', delimiter=',',
+        converters={33: lambda x:int(x == '?'), 34: lambda x:int(x)-1}) #the path of data
 sz = data.shape
+
+#dtype [[ 2.  2.  0.  3.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  3.  2.  0.
+#   0.  0.  0.  0.  0.  0.  0.  0.  0.  3.  0.  0.  0.  1.  0.  0.  1.]
+# [ 3.  3.  3.  2.  1.  0.  0.  0.  1.  1.  1.  0.  0.  1.  0.  1.  2.  0.
+#   2.  2.  2.  2.  2.  1.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
+# [ 2.  1.  2.  3.  1.  3.  0.  3.  0.  0.  0.  1.  0.  0.  0.  1.  2.  0.
+#   2.  0.  0.  0.  0.  0.  2.  0.  2.  3.  2.  0.  0.  2.  3.  0.  2.]]
+
 
 train = data[:int(sz[0] * 0.7), :]
 test = data[int(sz[0] * 0.7):, :]
